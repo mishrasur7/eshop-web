@@ -1,0 +1,22 @@
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore SQLite database
+db.sqlite3
+
+# Ignore virtual environments
+venv/
+
+# Ignore Django migration history (optional)
+*.log
+*.pot
+*.pyc
+
+# Byte-compiled / optimized / DLL files
+*.pyo
+*.so
+
+# VSCode or other IDE settings
+.vscode/
+.idea/
