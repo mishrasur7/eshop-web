@@ -18,6 +18,8 @@ This is a full-stack e-commerce application with a **Django (Python)** backend a
 git clone https://github.com/mishrasur7/eshop-web.git
 cd eshop-web
 ```
+---
+
 ### 2. Setup the backend
 ```bash
 cd ecommerce_backend
@@ -52,6 +54,7 @@ python manage.py runserver
 ```
 Now visit http://localhost:8000
 
+---
 ### 3. Setup the frontend 
 ```bash
 cd ecommerce_frontend
