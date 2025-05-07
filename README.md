@@ -2,25 +2,6 @@
 
 This is a full-stack e-commerce application with a **Django (Python)** backend and a **React (JavaScript)** frontend.
 
----
-
-## 🗂️ Brief Project Structure
-eshop-web/
-├── ecommerce_backend/ # Django project
-│ └── ecommerce_backend
-│ └── store
-│ └── manage.py
-│
-├── ecommerce_frontend/ # React app
-│ └── package.json
-│ └── src/
-│
-└── .gitignore
-└── README.md
-
-
----
-
 ## 🧠 Prerequisites
 
 - Python 3.8+
@@ -42,11 +23,11 @@ cd eshop-web
 cd ecommerce_backend
 ```
 
-# Create virtual environment
+#### Create virtual environment
 ```bash
 python -m venv venv
 ```
-# Activate the virtual environment
+#### Activate the virtual environment
 ```bash
 source venv/bin/activate # On Mac
 ```
@@ -55,17 +36,17 @@ source venv/bin/activate # On Mac
 venv\Scripts\activate # On Windows
 ```
 
-# Install dependencies
+#### Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-# Apply migrations
+#### Apply migrations
 ```bash
 python manage.py migrate
 ```
 
-# Run development server
+#### Run development server
 ```bash
 python manage.py runserver
 ```
@@ -76,12 +57,12 @@ Now visit http://localhost:8000
 cd ecommerce_frontend
 ```
 
-# Install dependencies
+#### Install dependencies
 ```bash
 npm install
 ```
 
-# Start React development server
+#### Start React development server
 ```bash
 npm start
 ```
