@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, } from 'react-bootstrap';
 import axios from 'axios';
 
+//accessing products api from .env file 
 const api = process.env.REACT_APP_API_URL;
 
 const ProductList = () => {
+  //State hook to store the list of products fetched from an API
   const [products, setProducts] = useState([]);
 
+  //fetching products upon page render
   useEffect(() => fetchProducts(), []);
 
+  //fetching products from api and saving to state variable 
   const fetchProducts = () => {
     axios.get(api)
       .then(res => {
