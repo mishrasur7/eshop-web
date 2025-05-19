@@ -1,40 +1,67 @@
+
+
 from django.db import models
 
-# Create your models here.
+
+
+#Name of generated db tables:
+# ecommerce_backend_category
+# ecommerce_backend_customer
+# ecommerce_backend_image
+# ecommerce_backend_order
+# ecommerce_backend_order_orderedProduct (with fields: id PK, order_id FK and product_id FK)
+# ecommerce_backend_product
 
 
 class Customer(models.Model):
     name = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
     
+class Category(models.Model):
+    name = models.CharField(max_length=100)
 
-class Order(models.Model):
-    customer_id = models.ForeignKey(Customer, on_delete=models.SET_NULL)
-    date = models.DateField()
+    class Meta:
+        verbose_name_plural = "Categories"
 
-
-class OrderField(models.Model):
-    order_id = models.ManyToOneRel(Order,on_delete=models.SET_NULL)
-    product_id = models.ForeignKey(Product,on_delete=models.CASCADE)
-    unitprice = models.FloatField()
-    amount = models.IntegerField()
+    def __str__(self):
+        return f"Category: {self.name}"
 
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
-    category_id = models.ForeignKey(Category)
-    image_id = models.ManyToOneRel(ProductImage)
-    price = models.FloatField()
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=5,decimal_places=2)
     discount = models.FloatField(default=0)
-    stock = models.IntegerField()
+    stock = models.IntegerField(default=0)
 
-class ProductImage(models.Model):
-    product_id = models.ForeignKey(Product)
+    def __str__(self):
+        return self.name
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
+
+
+class Order(models.Model):
+
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL,null=True)
+    orderedProducts = models.ManyToManyField(Product)
+    date = models.DateField()
+
+    def __str__(self):
+        return f"Customer_id: {self.customer}'s Order."
+
+
+
+class Image(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
+    url = models.CharField(max_length=200)
+
+
+
+
+
+
+
+
 
