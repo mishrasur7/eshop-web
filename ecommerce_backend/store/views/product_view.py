@@ -20,6 +20,9 @@ class ProductListAPIView(APIView):
     
     # Handle POST requests to create a new product
     def post(self, request):
+        # check if the request is not coming from admin user
+        if not request.user.is_staff:
+            return Response({'Error message': 'Only admin can add products.'}, status=403)
         # Deserialize and validate incoming product data
         serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
@@ -43,6 +46,9 @@ class SingleProductAPIView(APIView):
     
     # Handle PUT requests to update an existing product by primary key
     def put(self, request, pk):
+        # check if the request is not coming from admin user
+        if not request.user.is_staff:
+            return Response({'Error message': 'Only admin can update product.'}, status=403)
         # Fetch the product by id or return 404 if not found
         product = get_object_or_404(Product, pk=pk)
         # Deserialize and validate the incoming updated data against the existing product instance
@@ -57,6 +63,9 @@ class SingleProductAPIView(APIView):
     
     # Handle DELETE requests to remove a product by primary key
     def delete(self, request, pk):
+        # check if the request is not coming from admin user
+        if not request.user.is_staff:
+            return Response({'Error message': 'Only admin can delete product.'}, status=403)
         # Fetch the product by id or return 404 if not found
         product = get_object_or_404(Product, pk=pk)
         # Delete the product instance from the database
