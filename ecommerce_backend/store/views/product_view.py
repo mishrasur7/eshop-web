@@ -1,48 +1,69 @@
+# import of external modules
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 
+# import of internal modules 
 from store.models import Product
 from store.serializers import ProductSerializer
 
 class ProductListAPIView(APIView):
-    # method to get all products
+    # Handle GET requests to retrieve all products
     def get(self, request):
+        # Query all product objects from the database
         products = Product.objects.all()
+        # Serialize the list of products (many=True because it's a queryset)
         serializer = ProductSerializer(products, many=True)
+        # Return serialized data as JSON response
         return Response(serializer.data)
     
-    #method to post product
+    # Handle POST requests to create a new product
     def post(self, request):
+        # Deserialize and validate incoming product data
         serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
+            # Save the new product instance if data is valid
             serializer.save()
+            # Return the serialized data with HTTP 201 Created status
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.error, status=status.HTTP_404_BAD_REQUEST)
-    
+        # If data is invalid, return errors with 400 Bad Request status
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class SingleProductAPIView(APIView):
-    # method to retrive single product
+    # Handle GET requests to retrieve a single product by primary key (id)
     def get(self, request, pk):
+        # Fetch the product by id or return 404 if not found
         product = get_object_or_404(Product, pk=pk)
+        # Serialize the single product instance
         serializer = ProductSerializer(product)
+        # Return the serialized product data
         return Response(serializer.data)
     
-    # method to update a product
+    # Handle PUT requests to update an existing product by primary key
     def put(self, request, pk):
+        # Fetch the product by id or return 404 if not found
         product = get_object_or_404(Product, pk=pk)
+        # Deserialize and validate the incoming updated data against the existing product instance
         serializer = ProductSerializer(product, data=request.data)
         if serializer.is_valid():
+            # Save updates if data is valid
             serializer.save()
+            # Return the updated product data
             return Response(serializer.data)
-        return Response(serializer.errors, status=400)
+        # Return validation errors with HTTP 400 Bad Request status if invalid
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    # method to delete a product
-    def delete(self, pk):
+    # Handle DELETE requests to remove a product by primary key
+    def delete(self, request, pk):
+        # Fetch the product by id or return 404 if not found
         product = get_object_or_404(Product, pk=pk)
+        # Delete the product instance from the database
         product.delete()
-        return Response(status=204)
+        # Return HTTP 204 No Content status indicating successful deletion
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
     
     
 
