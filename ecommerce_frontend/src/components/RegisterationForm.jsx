@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Container, Alert, Card } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const api = process.env.REACT_APP_API_URL_REGISTER
 
@@ -24,6 +25,8 @@ const RegisterationForm = () => {
     });
   };
 
+  const navigate = useNavigate()
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +36,7 @@ const RegisterationForm = () => {
       setMessage('Registration successful!');
       setError('');
       setFormData({ username: '', email: '', password: '' });
+      navigate('/login')
     } catch (err) {
       setError('Registration failed. ');
       setMessage('');
