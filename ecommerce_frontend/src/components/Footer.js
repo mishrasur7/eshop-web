@@ -1,41 +1,50 @@
-import React from 'react'
-import {  Container, Row, Col} from 'react-bootstrap'
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import logo from "../assets/images/logo.png";
-
 
 function Footer() {
     return (
-        <footer style={{ backgroundColor: "#fff", color: "black", paddingTop: "20px", paddingBottom: "20px" }}>
+        <footer style={{ backgroundColor: "#f8f9fa", color: "#212529", padding: "30px 0", borderTop: "1px solid #dee2e6" }}>
             <Container>
-                <Row className="align-items-center">
-                    {/* Logo on the left */}
-                    <Col xs={12} md={4} className="text-center text-md-left">
-                        <img src={logo} alt="Logo" style={{ width: "100px", height: "100px" }} />
+                <Row className="align-items-center text-center text-md-left">
+                    {/* Logo and Brand */}
+                    <Col xs={12} md={4} className="mb-4 mb-md-0">
+                        <img src={logo} alt="Logo" style={{ width: "80px", height: "80px" }} />
+                        <p className="mt-2 mb-0"><strong>eshop-web</strong></p>
                     </Col>
 
-                    {/* Contact Information in the middle */}
-                    <Col xs={12} md={4} className="text-center">
-                        <p>
-                            <strong>Contact Information:</strong><br />
-                            Address: Valimotie 00380 <br />00380 Helsinki, Finland<br /><br />
-                            Email: <a href="mailto:eshop-web@gmail.com" style={{ color: "#000" }}>eshop-web@gmail.com</a><br />
-                            Contact: +358XXXXXXXX
+                    {/* Contact Info */}
+                    <Col xs={12} md={4} className="mb-4 mb-md-0">
+                        <h6 className="mb-2">Contact Us</h6>
+                        <p className="mb-1">Valimotie 00380, Helsinki, Finland</p>
+                        <p className="mb-1">
+                            <a href="mailto:eshop-web@gmail.com" style={{ color: "#212529", textDecoration: "none" }}>
+                                eshop-web@gmail.com
+                            </a>
                         </p>
+                        <p className="mb-0">+358XXXXXXXX</p>
                     </Col>
 
-                    {/* Social Media Links on the right */}
-                    <Col xs={12} md={4} className="text-center text-md-right">
-                        <p>
-                            <strong>Follow us:</strong><br />
-                            
-                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: "#000", marginRight: "10px" }}>Facebook</a>
-                            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: "#000", marginRight: "10px" }}>LinkedIn</a>
-                            <a href="https://wa.me/358417278258" target="_blank" rel="noopener noreferrer" style={{ color: "#000" }}>WhatsApp</a><br />
+                    {/* Social Media */}
+                    <Col xs={12} md={4}>
+                        <h6 className="mb-2">Follow Us</h6>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="me-3 text-dark text-decoration-none">
+                            Facebook
+                        </a>
+                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="me-3 text-dark text-decoration-none">
+                            LinkedIn
+                        </a>
+                        <a href="https://wa.me/358417278258" target="_blank" rel="noopener noreferrer" className="text-dark text-decoration-none">
+                            WhatsApp
+                        </a>
+                    </Col>
+                </Row>
 
-                            <br />
-                            <p>&copy; copyright@eshop-web
-                            </p>
-                        </p>
+                {/* Bottom copyright */}
+                <hr className="my-4" />
+                <Row>
+                    <Col className="text-center">
+                        <small>&copy; {new Date().getFullYear()} eshop-web. All rights reserved.</small>
                     </Col>
                 </Row>
             </Container>
