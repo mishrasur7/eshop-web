@@ -1,9 +1,12 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Navbar, Nav, Container, Form, FormControl, Button, InputGroup } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Header() {
   //navigate function for navigation using useNavigate hook from react-router-dom
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+
   //getting boolean value using double negation operator 
   const isAuthenticated = !!localStorage.getItem('authToken');
 
@@ -11,6 +14,13 @@ function Header() {
   const handleLogout = () => {
     localStorage.removeItem('authToken');
     navigate('/login'); 
+  };
+
+  const handleSearch = (e) => {
+  e.preventDefault();
+  if (searchTerm.trim()) {
+    console.log(searchTerm)
+  }
   };
 
   return (
@@ -25,6 +35,23 @@ function Header() {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
 
           <Navbar.Collapse id='basic-navbar-nav'>
+
+            {/* Centered Search */}
+            <Form className="mx-auto w-50" onSubmit={handleSearch}>
+              <InputGroup>
+                <FormControl
+                  type='search'
+                  placeholder='Search for products, categories or articles'
+                  className='rounded-pill px-3'
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  style={{ backgroundColor: '#f5f5f5' }}
+                />
+                <Button variant="link" type="submit" className="text-success ms-n5 me-2">
+                  <i className="fas fa-search"></i>
+                </Button>
+              </InputGroup>
+            </Form>
 
             <Nav className='ms-auto'>
               <Nav.Link as={Link} to='/cart'>
