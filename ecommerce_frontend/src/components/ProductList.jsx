@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, } from 'react-bootstrap';
 import axios from 'axios';
 
 //accessing products api from .env file 
-const api = process.env.REACT_APP_API_URL;
+const api = process.env.REACT_APP_API_URL_PRODUCTS;
 
 const ProductList = () => {
   //State hook to store the list of products fetched from an API
