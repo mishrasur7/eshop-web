@@ -10,6 +10,7 @@ import ProductList from './components/ProductList';
 import AddProduct from './components/AddProduct';
 import LoginForm from './components/LoginForm';
 import RegisterationForm from './components/RegisterationForm';
+import ProductDetails from "./components/ProductDetails"
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route path='/register' element={<RegisterationForm />}/>
+          <Route path='/details' element={<ProductDetails />}/>
           <Route path='/' element={<ProductList />}/>
         </Routes>
       </main>
