@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, } from 'react-bootstrap';
 import axios from 'axios';
 
+import AddToCart from './AddToCart'
+
 //accessing products api from .env file 
 const api = process.env.REACT_APP_API_URL_PRODUCTS;
 
@@ -49,7 +51,7 @@ const ProductList = () => {
                 <Card.Text className="text-truncate">Description: {product.description}</Card.Text>
                 <div className="d-flex justify-content-around align-items-center">
                   <strong className="text-success">Price: €{product.price}</strong>
-                  <button className="btn btn-primary btn-xl">Buy</button>
+                  <AddToCart productId={product.id}/>
                 </div>
               </Card.Body>
             </Card>
