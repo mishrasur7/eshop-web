@@ -30,8 +30,18 @@ class UserSerializer(serializers.ModelSerializer):
 
 # Serializer for the Cart model, includes selected fields
 class CartSerializer(serializers.ModelSerializer):
+    product = ProductSerializer(read_only=True)
+
+    # # this tells DRF to use this field for writing to 'product'
+    # product_id = serializers.PrimaryKeyRelatedField(
+    #     queryset=Product.objects.all(), 
+    #     write_only=True,
+    #     source='product'   
+    # )
+    
     class Meta:
         model = Cart
-        fields = ['id', 'user', 'product', 'quantity', 'added_at']
+        fields = ['id', 'user', 'product', 'product_id', 'quantity', 'added_date']
+        read_only_fields = ['user', 'added_date']
 
 
