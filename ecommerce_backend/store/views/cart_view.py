@@ -8,7 +8,7 @@ from store.serializers import CartSerializer
 
 # API view to handle Cart-related operations for authenticated users
 class CartAPIView(APIView):
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
 
     # Handle GET request: retrieve all cart items for the current user
     def get(self, request):
