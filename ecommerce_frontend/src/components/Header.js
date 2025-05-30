@@ -1,5 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Navbar, Nav, Container, Form, FormControl, Button, InputGroup } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { 
+  Navbar, 
+  Nav, 
+  Container, 
+  Form, 
+  FormControl, 
+  Button, 
+  InputGroup,
+  NavDropdown 
+} from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Header() {
@@ -27,6 +36,20 @@ function Header() {
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
+           {/* Menu bar added left of the brand name */}
+          <Nav className="me-3">
+            <NavDropdown title={<><i className="fas fa-bars"></i></>} >
+              <NavDropdown.Item as={Link} to='/hone'>Home</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/offers'>Offers</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/clubdeals'>Clubdeals</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/about'>About</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/logout'>Logout</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/settings'>Settings</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/contact'>ContactUS</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/more'>More</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+
           <Navbar.Brand as={Link} to='/'>
             eshop-web
           </Navbar.Brand>
