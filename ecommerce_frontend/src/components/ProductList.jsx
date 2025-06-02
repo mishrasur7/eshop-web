@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, } from 'react-bootstrap';
+
+import { Container, Row, Col, Card} from 'react-bootstrap';
 import axios from 'axios';
 
 import AddToCart from './AddToCart'
+
 import ProductCard from "./ProductCard"
 
 //accessing products api from .env file 
@@ -33,6 +35,7 @@ const ProductList = () => {
       <Row>
         {products.map(product => (
           <Col key={product.id} md={4} className="mb-4">
+
             <Card style={{ height: '100%' }}>
               {product.image_url && (
                 <div style={{ height: '200px', overflow: 'hidden' }}>
@@ -57,6 +60,7 @@ const ProductList = () => {
                 </div>
               </Card.Body>
             </Card>
+
             <ProductCard product={product} />
           </Col>
         ))}
