@@ -3,7 +3,7 @@ import { Form, Button, Container, Alert, Collapse, Row, Col } from 'react-bootst
 import axios from 'axios';
 
 //accessing products api from .env file
-const api = process.env.REACT_APP_API_URL;
+const api = process.env.REACT_APP_API_URL_PRODUCTS;
 
 const AddProduct = () => {
     //state hook to hold form data
@@ -34,6 +34,14 @@ const AddProduct = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const token = localStorage.getItem('authToken') 
+  console.log('token', token)
+  const config = {
+    headers: {
+      'Authorization': `Token ${token}`,
+      'Content-Type': 'application/json'
+    }
+  }
 
   //submit form data to the backend through api
   const handleSubmit = async (e) => {
@@ -45,7 +53,7 @@ const AddProduct = () => {
 
     try {
         //send post request to backend
-      await axios.post(api, formData);
+      await axios.post(api, formData, config);
 
       //upon success request, set the message, empty the form and close close it 
       setSuccessMessage('Product added successfully!');
