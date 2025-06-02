@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, } from 'react-bootstrap';
+import { Container, Row, Col, } from 'react-bootstrap';
 import axios from 'axios';
 
 import AddToCart from './AddToCart'
+import ProductCard from "./ProductCard"
 
 //accessing products api from .env file 
 const api = process.env.REACT_APP_API_URL_PRODUCTS;
@@ -25,6 +26,7 @@ const ProductList = () => {
         console.error(err);
       });
   };
+
 
   return (
     <Container className="mt-4">
@@ -55,6 +57,7 @@ const ProductList = () => {
                 </div>
               </Card.Body>
             </Card>
+            <ProductCard product={product} />
           </Col>
         ))}
       </Row>

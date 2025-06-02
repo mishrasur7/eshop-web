@@ -11,6 +11,7 @@ import AddProduct from './components/AddProduct';
 import LoginForm from './components/LoginForm';
 import RegisterationForm from './components/RegisterationForm';
 import CartItems from './components/CartItems';
+import ProductDetails from "./components/ProductDetails"
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path='/register' element={<RegisterationForm />}/>
           <Route path='/cart' element={<CartItems />}/>
+          <Route path='/details' element={<ProductDetails />}/>
           <Route path='/' element={<ProductList />}/>
         </Routes>
       </main>
