@@ -21,6 +21,8 @@ class ProductListAPIView(APIView):
     # Handle POST requests to create a new product
     def post(self, request):
         # check if the request is not coming from admin user
+        print(f'User: {request.user}')
+        print(f'Data: {request.data}')
         if not request.user.is_staff:
             return Response({'Error message': 'Only admin can add products.'}, status=403)
         # Deserialize and validate incoming product data
@@ -31,6 +33,7 @@ class ProductListAPIView(APIView):
             # Return the serialized data with HTTP 201 Created status
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         # If data is invalid, return errors with 400 Bad Request status
+        print("Serializer errors:", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

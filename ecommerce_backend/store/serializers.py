@@ -30,7 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 # Serializer for the Cart model, includes selected fields
 class CartSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
+    # product = ProductSerializer(read_only=True)
 
     # # this tells DRF to use this field for writing to 'product'
     # product_id = serializers.PrimaryKeyRelatedField(
