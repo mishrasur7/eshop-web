@@ -23,6 +23,7 @@ class RegisterUserAPIView(APIView):
             # Return the token in the response
             return Response({'token': token.key})
         # Return validation errors if data is invalid
+        print('Serializer error: ', serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginUserAPIView(APIView):
