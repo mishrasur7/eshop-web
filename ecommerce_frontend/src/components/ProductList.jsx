@@ -60,8 +60,6 @@ const ProductList = () => {
                 </div>
               </Card.Body>
             </Card>
-
-            <ProductCard product={product} />
           </Col>
         ))}
       </Row>
