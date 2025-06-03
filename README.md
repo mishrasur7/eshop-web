@@ -48,6 +48,11 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
+#### Create Superuser
+```bash
+python manage.py createsuperuser
+```
+
 #### Run development server
 ```bash
 python manage.py runserver
