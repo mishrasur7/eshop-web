@@ -13,7 +13,6 @@ import RegisterationForm from './components/RegisterationForm';
 import ProductDetails from './components/ProductDetails'
 import CartItems from './components/CartItems'
 
-
 function App() {
   return (
     <Router>

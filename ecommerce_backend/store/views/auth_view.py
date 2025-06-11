@@ -8,7 +8,6 @@ from rest_framework.authentication import authenticate
 # import of internal modules
 from store.serializers import UserSerializer
 
-
 class RegisterUserAPIView(APIView):
     # Handle user registration via POST request
     def post(self, request):
