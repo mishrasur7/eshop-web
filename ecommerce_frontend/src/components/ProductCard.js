@@ -2,21 +2,18 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
+import AddToCart from './AddToCart'
+
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    console.log(`handleCardClick`);
-    
     navigate('/details', { state: { product } });
   };
 
   return (
-    <div onClick={handleCardClick}>
-
-
-    <Card
-      
+  <Card
+      onClick={handleCardClick}
       style={{ height: '100%', cursor: 'pointer' }}
     >
       {product.image_url && (
@@ -44,21 +41,10 @@ const ProductCard = ({ product }) => {
         </Card.Text>
         <div className="d-flex justify-content-around align-items-center">
           <strong className="text-success">Price: €{product.price}</strong>
-          {/* <button
-            className="btn btn-primary btn-xl"
-            onClick={(e) => {
-              e.stopPropagation();
-              // Optionally handle Buy button separately
-            }}
-          >
-            Add to cart
-          </button> */}
+          <AddToCart productId={product.id}/>
         </div>
       </Card.Body>
     </Card>
-
-          
-    </div>
   );
 };
 
