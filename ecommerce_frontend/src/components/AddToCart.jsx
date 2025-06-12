@@ -10,7 +10,8 @@ const AddToCart = ({ productId })  => {
 
   console.log('product id: ', productId)
 
-  const handleAddToCart = async () => {
+  const handleAddToCart = async (e) => {
+    e.stopPropagation(); // prevents click from reaching parent Card
     const authToken = localStorage.getItem('authToken');
     console.log('authToken: ', authToken)
 
@@ -42,7 +43,7 @@ const AddToCart = ({ productId })  => {
   };
 
   return (
-    <div>
+    <div onClick={(e) => e.stopPropagation()}>
       {successMessage && (
         <Alert variant="success" onClose={() => setSuccessMessage('')} dismissible>
           {successMessage}
