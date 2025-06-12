@@ -6,12 +6,17 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
+    console.log(`handleCardClick`);
+    
     navigate('/details', { state: { product } });
   };
 
   return (
+    <div onClick={handleCardClick}>
+
+
     <Card
-      onClick={handleCardClick}
+      
       style={{ height: '100%', cursor: 'pointer' }}
     >
       {product.image_url && (
@@ -23,7 +28,7 @@ const ProductCard = ({ product }) => {
             style={{
               width: '100%',
               height: '200px', // or any fixed height
-              objectFit: 'contain',
+              objectFit: 'cover',
               objectPosition: 'center',
               backgroundColor: '#f8f9fa' // optional: light background fill
             }}
@@ -39,7 +44,7 @@ const ProductCard = ({ product }) => {
         </Card.Text>
         <div className="d-flex justify-content-around align-items-center">
           <strong className="text-success">Price: €{product.price}</strong>
-          <button
+          {/* <button
             className="btn btn-primary btn-xl"
             onClick={(e) => {
               e.stopPropagation();
@@ -47,10 +52,13 @@ const ProductCard = ({ product }) => {
             }}
           >
             Add to cart
-          </button>
+          </button> */}
         </div>
       </Card.Body>
     </Card>
+
+          
+    </div>
   );
 };
 
