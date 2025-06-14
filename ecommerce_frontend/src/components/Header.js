@@ -28,10 +28,11 @@ function Header() {
   };
 
   const handleSearch = (e) => {
-  e.preventDefault();
-  if (searchTerm.trim()) {
-    console.log(searchTerm)
-  }
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate("/", { state: { searchText: searchTerm } });
+      console.log(searchTerm)
+    }
   };
 
   return (
@@ -69,7 +70,14 @@ function Header() {
                   placeholder='Search for products, categories or articles'
                   className='rounded-pill px-3'
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    if (e.target.value.trim() === "") {
+                      navigate("/", { state: { searchText: "" } });
+                    } else {
+                      navigate("/", { state: { searchText: searchTerm } });
+                    }
+                  }}
                   style={{ backgroundColor: '#f5f5f5' }}
                 />
                 <Button variant="link" type="submit" className="text-success ms-n5 me-2">

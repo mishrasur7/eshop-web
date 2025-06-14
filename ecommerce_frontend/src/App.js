@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,8 +14,8 @@ import RegisterationForm from './components/RegisterationForm';
 import ProductDetails from './components/ProductDetails'
 import CartItems from './components/CartItems'
 
-
 function App() {
+  const [searchText] = useState("");
   return (
     <Router>
       <Header />
@@ -25,7 +26,7 @@ function App() {
           <Route path='/register' element={<RegisterationForm />}/>
           <Route path='/cart' element={<CartItems />}/>
           <Route path='/details' element={<ProductDetails />}/>
-          <Route path='/' element={<ProductList />}/>
+          <Route path='/' element={<ProductList searchText={searchText} />}/>
         </Routes>
       </main>
       <Footer />

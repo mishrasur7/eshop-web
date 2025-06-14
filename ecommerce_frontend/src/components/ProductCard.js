@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import AddToCart from './AddToCart'
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, searchText }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
