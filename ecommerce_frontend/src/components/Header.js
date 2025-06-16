@@ -30,9 +30,9 @@ function Header() {
   const handleSearch = (e) => {
   e.preventDefault();
   if (searchTerm.trim()) {
-    console.log(searchTerm)
+    navigate(`/?search=${encodeURIComponent(searchTerm.trim())}`);
   }
-  };
+};
 
   return (
     <header>

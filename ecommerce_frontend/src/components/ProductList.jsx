@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from 'react';
-
-import { Container, Row, Col, Card} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
-import AddToCart from './AddToCart'
-import ProductCard from "./ProductCard"
+import ProductCard from "./ProductCard";
 
-//accessing products api from .env file 
 const api = process.env.REACT_APP_API_URL_PRODUCTS;
 
-const ProductList = () => {
-  //State hook to store the list of products fetched from an API
+const ProductList = ({ searchTerm = "" }) => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  //fetching products upon page render
-  useEffect(() => fetchProducts(), []);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-  //fetching products from api and saving to state variable 
   const fetchProducts = () => {
     axios.get(api)
       .then(res => {
-        console.log('Data: ', res.data)
         setProducts(res.data);
       })
       .catch(err => {
@@ -28,14 +24,23 @@ const ProductList = () => {
       });
   };
 
+  useEffect(() => {
+    if (searchTerm.trim()) {
+      const filtered = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(products);
+    }
+  }, [searchTerm, products]);
 
   return (
     <Container className="mt-4">
       <Row>
-        {products.map(product => (
+        {filteredProducts.map(product => (
           <Col key={product.id} md={4} className="mb-4">
-
-          <ProductCard product={product} />
+            <ProductCard product={product} />
           </Col>
         ))}
       </Row>
