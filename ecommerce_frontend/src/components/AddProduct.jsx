@@ -45,7 +45,8 @@ const AddProduct = () => {
 
   //submit form data to the backend through api
   const handleSubmit = async (e) => {
-    //By default, submitting a form causes the page to reload. Using e.preventDefault() allows you to handle the form submission with JavaScript, keeping the user on the same page and providing a smoother experience 
+    //By default, submitting a form causes the page to reload. Using e.preventDefault() allows you to handle the form 
+    // submission with JavaScript, keeping the user on the same page and providing a smoother experience 
     //for reference visit -> https://www.reddit.com/r/webdev/comments/1gajalx/why_do_developers_use_preventdefault_on_form/
     e.preventDefault();
     setSuccessMessage('');

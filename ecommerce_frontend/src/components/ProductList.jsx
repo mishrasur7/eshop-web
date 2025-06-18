@@ -4,7 +4,6 @@ import { Container, Row, Col, Card} from 'react-bootstrap';
 import axios from 'axios';
 
 import AddToCart from './AddToCart'
-import ProductCard from "./ProductCard"
 
 //accessing products api from .env file 
 const api = process.env.REACT_APP_API_URL_PRODUCTS;
